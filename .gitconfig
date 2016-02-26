@@ -1,0 +1,62 @@
+[alias]
+  br = branch
+  ci = commit
+  cl = clone
+  co = checkout
+  cp = cherry-pick
+  df = diff -a -w
+  dw = diff -a -w --word-diff
+  lg = log --graph  --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=local
+  list = log --oneline --color --decorate
+  li = log --oneline --color
+  ls = log --stat
+  me = merge
+  pruneremote = remote prune origin
+  ri = rebase --interactive
+  st = status
+  tr = log --graph --oneline --decorate --color
+  tree = log --graph --oneline --decorate --color --all
+  tweak = commit --amend -C HEAD
+  unpulled = !"PROJ_BRANCH=$(git symbolic-ref HEAD | sed 's|refs/heads/||') && git fetch && git log HEAD..origin/$PROJ_BRANCH"
+  unpushed = !"PROJ_BRANCH=$(git symbolic-ref HEAD | sed 's|refs/heads/||') && git log origin/$PROJ_BRANCH..HEAD"
+[color]
+  ui = true
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "status"]
+  added = green
+  changed = yellow
+  untracked = cyan
+[core]
+  excludesfile = ~/.gitignore.global
+  editor = vim
+  whitespace = warn
+[diff]
+  algorithm = patience
+[fetch]
+  prune = true
+[include]
+  path = ~/.gitconfig.local
+[help]
+  autocorrect = 10
+[interactive]
+  singlekey = true
+[merge]
+  summary = true
+[merge "bundlelock"]
+  name = lock Gemfile
+  driver = bundle install
+[merge "bundle"]
+  name = bundle
+  driver = bundle
+[push]
+  default = tracking
+[rebase]
+  autosquash = true
+[rerere]
+  enabled = true
+[user]
+  name = Nick Karpenske
+  email = nkarpenske@doximity.com
